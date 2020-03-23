@@ -10,19 +10,27 @@ namespace Cw1
         public static void Main(string[] args)
         {
             int numOfParams = 0;
-            int k = 0; // how many neighbours
+            int k = 3; // how many neighbours
             bool isFirst = true;
             while (true)
             {
+                var lines = File.ReadLines("..\\..\\..\\iris_training.txt");
+
                 if (k == 0 || isFirst == false)
                 {
                     Console.WriteLine("Podaj wartość K: ");
                     k = Convert.ToInt32(Console.ReadLine());
                     isFirst = false;
+                    
+                    
+               
+                    
                 }
+                
+                
+                
 
-
-                var lines = File.ReadLines("..\\..\\..\\iris_training.txt");
+                
 
                 bool isFirstIteration = true;
 
@@ -64,6 +72,26 @@ namespace Cw1
 
                 var linestest = File.ReadLines("..\\..\\..\\iris_test.txt");
                 var parameterstest = new Parameters();
+
+
+                
+                if (!isFirst) {
+                    Console.WriteLine("Podaj x1");
+                    double x1 = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Podaj x2");
+                    double x2 = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Podaj x3");
+                    double x3 = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Podaj x4");
+                    double x4 = Convert.ToDouble(Console.ReadLine());
+
+                    using (File.Create("tmp.txt")) {
+                        Console.WriteLine("FiLE CREATED");
+                    } ;
+                    File.WriteAllText("tmp.txt", x1 + "    	 " + x2 + "    	 " + x3 + "    	 " + x4 + "    	" + "???");
+                    linestest = File.ReadLines("tmp.txt");
+                }
+
                 foreach (var line in linestest)
                 {
 
@@ -174,12 +202,17 @@ namespace Cw1
                     tab = new XVector[k];
 
                 }
-                Console.WriteLine("Łączna liczba dopasowań " + fullcount);
-                Console.WriteLine("LICZBA POPRAWNYCH DOPASOWAŃ " + count);
+                if (isFirst)
+                {
+                    Console.WriteLine("Łączna liczba dopasowań " + fullcount);
+                    Console.WriteLine("LICZBA POPRAWNYCH DOPASOWAŃ " + count);
 
-                Console.WriteLine("PROCENT " + (count / fullcount) * 100 + "%");
-
-
+                    Console.WriteLine("PROCENT " + (count / fullcount) * 100 + "%");
+                }
+                else { 
+                   
+                }
+                isFirst = false;
             }
         }
      
