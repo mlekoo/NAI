@@ -87,7 +87,7 @@ namespace Cw4
                 assignToGroups();
 
                 for(int i = 0; i < groups.Count; i++) {
-                    Console.WriteLine("GROUP ID: " + i + " DISTANCE: " + sumOfDistance2(groups[i]));
+                    Console.WriteLine("GROUP ID: " + i + " SUMOFDDISTANCESQUARED: " + sumOfDistance2(groups[i]));
                 }
 
 
