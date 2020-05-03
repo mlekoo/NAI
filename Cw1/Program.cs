@@ -10,7 +10,11 @@ namespace Cw1
         public static void Main(string[] args)
         {
             int numOfParams = 0;
-            int k = 3; // how many neighbours
+
+            Console.WriteLine("WRITE K:");
+
+            int k = Convert.ToInt32(Console.ReadLine());
+
             bool isFirst = true;
             while (true)
             {
@@ -76,14 +80,27 @@ namespace Cw1
 
                 
                 if (!isFirst) {
+                    Console.WriteLine("Napisz N jako wartość jezeli nie chcesz podac kolejnej zmiennej");
+
                     Console.WriteLine("Podaj x1");
+                    
                     double x1 = Convert.ToDouble(Console.ReadLine());
+
+                  
                     Console.WriteLine("Podaj x2");
+                    
                     double x2 = Convert.ToDouble(Console.ReadLine());
+
                     Console.WriteLine("Podaj x3");
+                   
                     double x3 = Convert.ToDouble(Console.ReadLine());
                     Console.WriteLine("Podaj x4");
+                    
                     double x4 = Convert.ToDouble(Console.ReadLine());
+
+                    Console.WriteLine("Podaj x5");
+
+                    Console.ReadLine();
 
                     using (File.Create("tmp.txt")) {
                         Console.WriteLine("FiLE CREATED");
