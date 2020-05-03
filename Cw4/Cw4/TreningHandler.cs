@@ -53,7 +53,7 @@ namespace Cw4
             int iterations = 0;
             bool didCentroidChange = true;
             
-            while (didCentroidChange || iterations < 2)
+            while (didCentroidChange)
             {
                 List<Vector> oldCentroids = new List<Vector>();
                 for (int i = 0; i < groups.Count; i++) {
@@ -87,7 +87,7 @@ namespace Cw4
                 assignToGroups();
 
                 for(int i = 0; i < groups.Count; i++) {
-                    Console.WriteLine("GROUP ID: " + i + " SUMOFDDISTANCESQUARED: " + sumOfDistance2(groups[i]));
+               //     Console.WriteLine("GROUP ID: " + i + " SUMOFDDISTANCESQUARED: " + sumOfDistance2(groups[i]));
                 }
 
 
@@ -106,7 +106,7 @@ namespace Cw4
         {
             for (int i = 0; i < groups.Count; i++)
             {
-                groups[i].centroid = average(groups[i].flowers);
+                groups[i].centroid = average(groups[i]);
             }
         }
 
@@ -157,20 +157,30 @@ namespace Cw4
             return distance;
         }
 
-        private Vector average(List<Flower> list){
+        private Vector average(Group group){
             Vector vector = new Vector();
-            int vecLength = list[0].vector.values.Count;
-            double[] values = new double[vecLength];
-            for (int i = 0; i < list.Count; i++) {
-                for (int j = 0; j < vecLength; j++) {
-                    values[j] += list[i].vector.values[j];
+            if (group.flowers.Count > 0)
+            {
+                int vecLength = group.flowers[0].vector.values.Count;
+                //int vecLength = groups[0].flowers[0].vector.values.Count;
+                double[] values = new double[vecLength];
+                for (int i = 0; i < group.flowers.Count; i++)
+                {
+                    for (int j = 0; j < vecLength; j++)
+                    {
+                        values[j] += group.flowers[i].vector.values[j];
+                    }
                 }
+
+                for (int i = 0; i < values.Length; i++)
+                {
+                    vector.values.Add(values[i] / group.flowers.Count);
+                }
+
+                return vector;
             }
 
-            for (int i = 0; i < values.Length; i++) {
-                vector.values.Add(values[i] / list.Count);
-            }
-            return vector;
+            return group.centroid;
         }
 
         private double sumOfDistance2(Group group) {
