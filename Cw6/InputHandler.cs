@@ -23,6 +23,7 @@ namespace Cw6
                 }
 
                 if (line.Contains("sizes")) {
+                    sizes = new List<int>();
                     var sizeList = getRawDataFromLine(line);
 
                     foreach (var size in sizeList) {

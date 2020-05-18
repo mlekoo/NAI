@@ -20,11 +20,11 @@ namespace Cw6
                 ItemSet currentResult = new ItemSet();
 
                 for (int j = 0; j < itemSet.items.Count; j++) {
-                    if ((number & j) == j) {
-                        if (currentResult.sumOfSizes() + itemSet.items[j].size <= backpack.capacity)
-                        {
-                            currentResult.items.Add(itemSet.items[j]);
-                        }
+                    if (((number >> j) & 1) == 1) {
+                            if (currentResult.sumOfSizes() + itemSet.items[j].size <= backpack.capacity)
+                            {
+                                currentResult.items.Add(itemSet.items[j]);
+                            }
                     }
                 }
 
