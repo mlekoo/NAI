@@ -70,8 +70,8 @@ namespace Cw4
                     sbn.Append(groups[i].centroid).Append(" ");
                    
                 }
-                Console.WriteLine(sbo);
-                Console.WriteLine(sbn);
+             //   Console.WriteLine(sbo);
+              //  Console.WriteLine(sbn);
                 Console.WriteLine();
 
                 didCentroidChange = false;
@@ -87,7 +87,7 @@ namespace Cw4
                 assignToGroups();
 
                 for(int i = 0; i < groups.Count; i++) {
-               //     Console.WriteLine("GROUP ID: " + i + " SUMOFDDISTANCESQUARED: " + sumOfDistance2(groups[i]));
+                    Console.WriteLine("GROUP ID: " + i + " SUMOFDDISTANCESQUARED: " + sumOfDistance2(groups[i]));
                 }
 
 
@@ -99,6 +99,7 @@ namespace Cw4
                     Console.WriteLine(groups[i].flowers[j].name);
                 }
                 Console.WriteLine("ENTROPIA: " + calcEntropia(groups[i]));
+              //  Console.WriteLine("SUMSQUARED: " + sumOfDistance2(groups[i]));
             }
             Console.WriteLine("ITERATIONS: " + iterations);
         }
