@@ -15,12 +15,11 @@ namespace Cw6
 
         public void run() {
             ItemSet bestResult = new ItemSet();
-            for (int i = 0; i < (long)Math.Pow(2, itemSet.items.Count); i++) {
-                long number = i;
-                ItemSet currentResult = new ItemSet();
+            ItemSet currentResult = new ItemSet();
+            for (long i = 0; i < (long)Math.Pow(2, itemSet.items.Count); i++) {
 
                 for (int j = 0; j < itemSet.items.Count; j++) {
-                    if (((number >> j) & 1) == 1) {
+                    if (((i >> j) & 1) == 1) {
                             if (currentResult.sumOfSizes() + itemSet.items[j].size <= backpack.capacity)
                             {
                                 currentResult.items.Add(itemSet.items[j]);
@@ -28,18 +27,14 @@ namespace Cw6
                     }
                 }
 
-                if (bestResult.items.Count < 1) {
+                if (bestResult.sumOfValues() <= currentResult.sumOfValues()) {
                     bestResult = currentResult;
                 }
-
-                int bSumOfValues = bestResult.sumOfValues();
-                int cSumOfValues = currentResult.sumOfValues();
-                if (bSumOfValues < cSumOfValues) {
-                    bestResult = currentResult;
-                }
+                currentResult = new ItemSet();
 
             }
-            Console.WriteLine(bestResult);
+            Backpack resultBackpack = new Backpack(backpack.capacity, bestResult.items);
+            Console.WriteLine(resultBackpack);
             Console.WriteLine("Sum of sizes: " + bestResult.sumOfSizes() + " Sum of values: " + bestResult.sumOfValues());
         }
 

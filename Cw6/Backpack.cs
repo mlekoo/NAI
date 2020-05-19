@@ -14,6 +14,23 @@ namespace Cw6
             this.capacity = capacity;
             this.items = new List<Item>();
         }
+        public Backpack(int capacity, List<Item> items)
+        {
+            this.capacity = capacity;
+            this.items = items;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var item in items)
+            {
+                sb.Append("Nr: " + item.number + " Size: " + item.size + " Value: " + item.value + "\n");
+            }
+
+            return sb.ToString();
+        }
 
     }
 }

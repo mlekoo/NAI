@@ -7,7 +7,7 @@ namespace Cw6
         static void Main(string[] args)
         {
 
-            InputHandler inputHandler = new InputHandler("../../../data/plecak.txt");
+            InputHandler inputHandler = new InputHandler("../../../data/plecak2.txt");
 
             Backpack backpack = new Backpack(inputHandler.backpackCapacity);
 
@@ -17,13 +17,15 @@ namespace Cw6
             Console.WriteLine("Set number: " + (setNumber + 1));
             Console.WriteLine();
 
-            var startTime = DateTime.Now;
-
+            var startTime = DateTime.Now.Second;
+            Console.WriteLine(startTime);
             BruteForce bruteForce = new BruteForce(backpack, itemSet);
 
             bruteForce.run();
 
-            Console.WriteLine("Time of execution: " + (DateTime.Now.Millisecond - startTime.Millisecond) + " milis");
+            var endTime = DateTime.Now.Second;
+            Console.WriteLine(endTime);
+            Console.WriteLine("Time of execution: " + (endTime - startTime) + " milis");
 
         }
     }
