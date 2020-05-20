@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace Cw6
 {
@@ -17,15 +18,16 @@ namespace Cw6
             Console.WriteLine("Set number: " + (setNumber + 1));
             Console.WriteLine();
 
-            var startTime = DateTime.Now.Second;
+            var startTime = Stopwatch.StartNew();
             Console.WriteLine(startTime);
+
             BruteForce bruteForce = new BruteForce(backpack, itemSet);
 
             bruteForce.run();
 
-            var endTime = DateTime.Now.Second;
-            Console.WriteLine(endTime);
-            Console.WriteLine("Time of execution: " + (endTime - startTime) + " milis");
+            startTime.Stop();
+            
+            Console.WriteLine("Time of execution: " + startTime.ElapsedMilliseconds + " milis");
 
         }
     }
