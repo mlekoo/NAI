@@ -14,6 +14,8 @@ namespace Cw6
 
             var setNumber = new Random().Next(0, inputHandler.itemSets.Count);
 
+            setNumber = 14;
+
             ItemSet itemSet = inputHandler.itemSets[setNumber];
             Console.WriteLine("Set number: " + (setNumber + 1));
             Console.WriteLine();

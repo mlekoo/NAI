@@ -20,15 +20,14 @@ namespace Cw6
 
                 for (int j = 0; j < itemSet.items.Count; j++) {
                     if (((i >> j) & 1) == 1) {
-                            if (currentResult.sumOfSizes() + itemSet.items[j].size <= backpack.capacity)
-                            {
                                 currentResult.items.Add(itemSet.items[j]);
-                            }
                     }
                 }
-
-                if (bestResult.sumOfValues() <= currentResult.sumOfValues()) {
-                    bestResult = currentResult;
+                if (currentResult.sumOfSizes() <= backpack.capacity) { 
+                    if (bestResult.sumOfValues() <= currentResult.sumOfValues()) {
+                    
+                        bestResult = currentResult;
+                    }
                 }
                 currentResult = new ItemSet();
 
